@@ -6,7 +6,7 @@
 
 | Field | Details |
 | :--- | :--- |
-| **Lead Assessor** | Richard Winner Duvor |
+| **Lead Assessor** | dr-winner |
 | **Assessment Type** | OSINT, External Footprinting & Subnet Enumeration |
 | **Date** | August 2026 |
 | **Assessment Modules** | • **Module 1**: Multi-Vector Footprinting (Kali Linux Recon Suite)<br>• **Module 2**: Search Engine Intelligence & Google Dorking (GHDB)<br>• **Module 3**: Visual OSINT Link Analysis (Maltego Graph)<br>• **Module 4**: Passive Asset Discovery & Intelligence (theHarvester)<br>• **Module 5**: Active Subnet Discovery & Service Enumeration (Nmap / Zenmap) |
@@ -233,6 +233,6 @@ By applying continuous attack surface management and systematically remediating 
 ## -End-
 
 👤 **Assessor**  
-**Richard Winner Duvor**  
+**dr-winner**  
 Assessment: **OSINT & Network Reconnaissance Assessment**  
 Repository: [osint-and-network-recon-assessment](https://github.com/dr-winner/osint-and-network-recon-assessment)
