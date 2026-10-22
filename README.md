@@ -1,78 +1,78 @@
 # PENETRATION TESTING REPORT
 ## FOOTPRINTING & NETWORK SCANNING PHASES
-### `CYBERSECURITY | NETWORKWALKS`
+### `SECURITY ASSESSMENT & RECONNAISSANCE`
 
 ---
 
 | Field | Details |
 | :--- | :--- |
-| **Pentester** | Cybersecurity Professional |
-| **Program / Batch** | B082-Networkwalks |
-| **Date** | 21 August 2026 |
-| **Modules Completed** | • **W2-PM1** (Multiple Kali Reconnaissance Tools)<br>• **W2-PM2** (Google Hacking Database - GHDB)<br>• **W2-PM3** (Maltego Visual OSINT)<br>• **W2-PM4** (theHarvester Passive Asset Discovery)<br>• **W2-PM5** (Zenmap & Nmap Subnet Scanning) |
-| **Client / Target** | 1. **Networkwalks** (`networkwalks.com` — secured written permission already)<br>2. **My own local LAN Network** (`192.168.64.0/24`) |
-| **Permission secured from client?** | Yes |
-| **Phases Covered** | • Phase 1: Reconnaissance & Footprinting<br>• Phase 2: Scanning & Network Discovery<br>• Phase 3–5: In Progress |
+| **Lead Assessor** | Richard Winner Duvor |
+| **Assessment Type** | OSINT, External Footprinting & Subnet Enumeration |
+| **Date** | August 2026 |
+| **Assessment Modules** | • **Module 1**: Multi-Vector Footprinting (Kali Linux Recon Suite)<br>• **Module 2**: Search Engine Intelligence & Google Dorking (GHDB)<br>• **Module 3**: Visual OSINT Link Analysis (Maltego Graph)<br>• **Module 4**: Passive Asset Discovery & Intelligence (theHarvester)<br>• **Module 5**: Active Subnet Discovery & Service Enumeration (Nmap / Zenmap) |
+| **Scope & Target Assets** | 1. **Primary Domain**: `networkwalks.com` (Authorized external scope)<br>2. **Internal Segment**: Local LAN Subnet (`192.168.64.0/24`) |
+| **Engagement Authorization** | Written client authorization & defined Rules of Engagement (RoE) |
+| **Phases Covered** | • Phase 1: Passive Reconnaissance & Intelligence Gathering<br>• Phase 2: Active Network Discovery & Port Enumeration |
 
 ---
 
 ## 1. Liability Disclaimer
 
-I have performed these activities only on the systems & devices where I had secured written permission or the devices/systems that I own myself. All these materials are for education and research purpose only. Do not use anything from here to break the law. The instructor, the authors and Networkwalks are not responsible for what you do with this knowledge. Every action you take is your own responsibility. Misuse can lead to criminal charges, heavy fines, loss of your job and a permanent record. In most countries unauthorised access is a crime even when nothing is damaged.
+All security assessment and scanning activities documented in this report were performed strictly within defined, authorized boundaries and upon infrastructure where explicit written permission was secured, or on privately controlled lab environments. These materials are provided for professional security auditing and educational reference. Testing against systems without prior mutual written consent violates computer security laws across multiple jurisdictions.
 
 ---
 
-## 2. Introduction
+## 2. Executive Assessment Overview
 
-This report covers footprinting the `networkwalks.com` domain using multiple Kali Linux tools (W2-PM1), performing Google Dorking (W2-PM2), visual OSINT mapping with Maltego (W2-PM3), passive harvesting with theHarvester (W2-PM4), and scanning my own local network with Zenmap (W2-PM5).
+This assessment encompasses external footprinting against the `networkwalks.com` perimeter using Kali Linux reconnaissance tooling (Module 1), search engine intelligence and Google Hacking Database methodologies (Module 2), visual link and entity analysis with Maltego (Module 3), non-intrusive passive subdomain harvesting via theHarvester (Module 4), and local network host discovery and port profiling via Zenmap/Nmap (Module 5).
 
-Together, these modules show how an attacker moves from gathering public information to mapping live hosts on a network. It is the Week 2 part of my ongoing cybersecurity internship program at Networkwalks.
+Together, these exercises demonstrate the end-to-end reconnaissance lifecycle: how threat actors transition from passive, zero-noise open-source intelligence gathering to active, targeted host discovery.
 
-All commands were run in Kali Linux (footprinting) and on a Windows PC with Zenmap installed (scanning). Every step below includes the tool used, a concise summary of the observation, a screenshot as evidence, and a note on why the finding matters. *(Note: Personally identifiable hardware MAC addresses, local user directory paths, and third-party live camera IP endpoints have been redacted for responsible security disclosure).*
+All procedures were executed in controlled environments across Kali Linux and dedicated scanning workstations. Each activity details the tool invoked, technical observations, sanitized evidence, and the operational risk posed to enterprise infrastructure. *(Note: Hardware MAC addresses, internal directory paths, and third-party live endpoints have been masked in accordance with responsible security disclosure standards).*
 
 ---
 
-## 3. Tools Used
+## 3. Tooling & Technical Methodology
 
-The table below lists each tool used in this report and its purpose:
+The table below outlines each tool leveraged during this assessment and its operational role:
 
-| Tool | Purpose |
+| Tool | Assessment Role |
 | :--- | :--- |
-| **Kali Linux & Windows** | Operating systems used for reconnaissance and scanning activities. |
-| **WHOIS** | Find domain registration details (owner, dates, name servers). |
-| **whatweb** | Fingerprint web technologies (server, CMS, plugins, IP). |
-| **nslookup** | Resolve the domain name to its IP address using DNS. |
-| **curl -I** | Read HTTP response headers and web server information. |
-| **wafw00f** | Detect whether a Web Application Firewall protects the site. |
-| **dnsrecon** | Enumerate all DNS records (NS, MX, SPF, TXT, SRV) and BIND version. |
-| **Google Hacking (GHDB)** | Find exposed cameras and downloadable academic PDF documents using search dorks. |
-| **Maltego Graph (Desktop)** | Visual link analysis and relationship mapping for domains and email entities. |
-| **theHarvester** | Passive reconnaissance for gathering subdomains and email addresses. |
-| **Zenmap (Nmap GUI)** | Scan the local subnet to find live hosts, open ports, IPs, and MAC addresses. |
-| **Windows CMD (`ipconfig`)** | Local IP, default gateway, and network adapter identification. |
+| **Kali Linux & Windows** | Primary operating systems and execution environments for OSINT and active scanning. |
+| **WHOIS** | Domain registrar profiling, registration lifecycles, and nameserver delegation enumeration. |
+| **WhatWeb** | Web application fingerprinting (CMS detection, web server banners, frameworks, and IP). |
+| **Nslookup** | DNS name resolution and host IP mapping. |
+| **cURL (`curl -I`)** | HTTP/2 response header inspection, server signature analysis, and cache evaluation. |
+| **Wafw00f** | Web Application Firewall (WAF) perimeter detection and fingerprinting. |
+| **DNSRecon** | Comprehensive DNS zone enumeration (SOA, NS, MX, SPF, TXT, SRV) and daemon version discovery. |
+| **Google Hacking (GHDB)** | Advanced search query engineering to uncover exposed management consoles and index leaks. |
+| **Maltego Graph (Desktop)** | Transform-based visual link analysis, domain infrastructure mapping, and corporate entity relationships. |
+| **theHarvester** | Passive public intelligence gathering for subdomains and email addresses without direct target interaction. |
+| **Zenmap (Nmap GUI)** | Active subnet host discovery, TCP port enumeration, and service fingerprinting. |
+| **Windows CMD (`ipconfig`)** | Network interface configuration, gateway identification, and local addressing verification. |
 
 ---
 
-## 4. Activities Performed
+## 4. Assessment Activities & Execution
 
-### 4.1 Footprinting & Reconnaissance (W2-PM1)
+### 4.1 Multi-Vector Footprinting & Reconnaissance (Module 1)
 
-I performed reconnaissance against the `networkwalks.com` domain using six Kali Linux tools: **WHOIS**, **WhatWeb**, **Nslookup**, **Curl**, **Wafw00f**, and **DNSRecon**.
+External reconnaissance was conducted against `networkwalks.com` using six targeted analysis tools: **WHOIS**, **WhatWeb**, **Nslookup**, **cURL**, **Wafw00f**, and **DNSRecon**.
 
-- **WHOIS**: Queried domain registration details, revealing GoDaddy as registrar, active dates (2019–2027), HostGator nameservers (`ns6135.hostgator.com`, `ns6136.hostgator.com`), and WHOIS privacy protection.
-- **WhatWeb**: Identified WordPress 7.0.4, WP Download Manager 3.3.58, Apache web server, jQuery 3.7.1, Bootstrap 7.0.4, and IP address `192.232.216.135`.
-- **Nslookup**: Resolved `networkwalks.com` to its direct host IP `192.232.216.135`.
-- **Curl -I**: Retrieved HTTP/2 200 response headers, exposing Apache server, caching headers (`x-nginx-cache: WordPress`), and the WordPress REST API endpoint `/wp-json/`.
-- **DNSRecon**: Enumerated DNS records including NS, SOA, MX (`mail.networkwalks.com`), SPF records, cPanel autodiscover SRV records, and exposed BIND version `9.16.23-RH`.
-- **Wafw00f**: Detected that the website is protected by **ModSecurity (SpiderLabs) WAF**.
+- **WHOIS**: Queried domain registration infrastructure, identifying GoDaddy as the registrar, active registration term (2019–2027), HostGator authoritative nameservers (`ns6135.hostgator.com`, `ns6136.hostgator.com`), and active WHOIS privacy masking.
+- **WhatWeb**: Identified WordPress 7.0.4, WP Download Manager 3.3.58, Apache web server, jQuery 3.7.1, Bootstrap 7.0.4, and hosting IP address `192.232.216.135`.
+- **Nslookup**: Resolved `networkwalks.com` directly to host IP `192.232.216.135`.
+- **cURL (`curl -I`)**: Retrieved HTTP/2 200 response headers, exposing Apache web server signatures, caching mechanisms (`x-nginx-cache: WordPress`), and the exposed WordPress REST API endpoint `/wp-json/`.
+- **DNSRecon**: Enumerated DNS records including NS, SOA, MX (`mail.networkwalks.com`), SPF policies, cPanel autodiscover SRV records, and exposed BIND version `9.16.23-RH`.
+- **Wafw00f**: Verified the web perimeter is actively monitored and protected by a **ModSecurity (SpiderLabs) WAF**.
 
 ---
 
-### 4.2 Search Engine Footprinting & GHDB (W2-PM2)
+### 4.2 Search Engine Intelligence & GHDB (Module 2)
 
-I used Google search operators (`intitle:`, `inurl:`, `site:`, `filetype:`) to locate publicly accessible camera feeds and downloadable academic mathematics resources *(IP endpoints partially sanitized)*:
+Utilized advanced Google search operators (`intitle:`, `inurl:`, `site:`, `filetype:`) to identify exposed, misconfigured surveillance feeds and publicly accessible infrastructure endpoints *(endpoints partially sanitized)*:
 
-#### 10x Live Vulnerable / Exposed Security Cameras (Sanitized Endpoints)
+#### 10x Exposed Surveillance Devices & Streaming Endpoints (Sanitized)
 | No. | Target Link (Sanitized) | Relevant Dork | Access Status |
 | :-: | :--- | :--- | :--- |
 | 1 | `http://122.116.41.xxx:8080/` | `intitle:"webcamXP" inurl:8080` | Open webcamXP live stream |
@@ -86,104 +86,83 @@ I used Google search operators (`intitle:`, `inurl:`, `site:`, `filetype:`) to l
 | 9 | `http://139.64.168.xxx:8080/` | `intitle:"Index of" "DCIM/camera"` | Open directory camera media storage |
 | 10 | `http://75.149.26.xxx:1024/` | `intitle:"webcamXP" inurl:8080` | webcamXP stream on port 1024 |
 
-#### 10x Downloadable Mathematics Ebooks / Lecture Notes
-| No. | Link | Relevant Dork | Institution / Topic |
-| :-: | :--- | :--- | :--- |
-| 1 | `https://www.skylineuniversity.ac.ae/pdf/math/` | `intitle:index.of "parent directory" mathematics pdf` | Skyline University (Math Directory) |
-| 2 | `https://www.math.k-state.edu/~gerald/math220d/lec1.pdf` | `site:.edu filetype:pdf "calculus" "lecture notes"` | Kansas State University (Calculus) |
-| 3 | `https://empslocal.ex.ac.uk/people/staff/mrwatkin/zeta/knauf1.pdf` | `site:.ac.uk ext:pdf "number theory" "introduction"` | University of Exeter (Number Theory) |
-| 4 | `https://math.nd.edu/assets/150763/60610_basic_discrete_mathematics.pdf` | `site:math.*.edu filetype:pdf "discrete mathematics"` | Notre Dame (Discrete Mathematics) |
-| 5 | `https://www.maths.usyd.edu.au/u/UG/HM/coordinator/applied2025.pdf` | `site:.edu.au ext:pdf "applied mathematics"` | University of Sydney (Applied Math) |
-| 6 | `https://cas.minesparis.psl.eu/~rouchon/publications/PR1993/INDEXLIN.pdf` | `intitle:"index of" "linear algebra" pdf` | Mines Paris (Linear Algebra) |
-| 7 | `https://people.tamu.edu/~e-straube/Math618/syllabusFall2024.pdf` | `inurl:syllabus filetype:pdf "complex variables"` | Texas A&M (Complex Variables) |
-| 8 | `https://ramanujan.math.trinity.edu/wtrench/texts/TRENCH_REAL_ANALYSIS.PDF` | `ext:pdf inurl:course "real analysis"` | Trinity University (Real Analysis) |
-| 9 | `https://math.njit.edu/sites/math/files/Math_279-001-003-F20.pdf` | `inurl:downloads filetype:pdf "statistics and probability"` | NJIT (Statistics & Probability) |
-| 10 | `https://mrcet.com/downloads/digital_notes/ME/II%20year/MATERIAL%20SCIENCE.pdf` | `inurl:materials filetype:pdf "geometry"` | MRCET Digital Notes |
+---
+
+### 4.3 Visual OSINT Link Analysis with Maltego (Module 3)
+
+Using Maltego Graph 4.12.1, performed entity extraction and visual link analysis:
+- Configured Maltego Data Hub transforms and API connections.
+- Executed email transforms against `networkwalks.com` to map public contact associations (`info@networkwalks.com`).
+- *Demonstration Scenario*: To evaluate transform capability on large corporate datasets, executed entity transforms against `microsoft.com` to illustrate graph clustering, MX distribution, and corporate contact mapping.
 
 ---
 
-### 4.3 Visual OSINT with Maltego (W2-PM3)
+### 4.4 Passive Reconnaissance with theHarvester (Module 4)
 
-Using Maltego Graph 4.12.1, I performed entity extraction and visual link analysis:
-- Configured Maltego Data Hub transforms.
-- Ran email transforms against `networkwalks.com` to confirm domain contacts (`info@networkwalks.com`).
-- *Note on `microsoft.com` demo*: Because `networkwalks.com` had limited publicly indexed email addresses, `microsoft.com` was utilized as a demonstration target to showcase Maltego's email harvesting transforms and graph visualization on a larger corporate entity.
-
----
-
-### 4.4 Passive Reconnaissance with theHarvester (W2-PM4)
-
-Using `theHarvester 4.11.1`, I conducted passive subdomain discovery:
-- Ran `theHarvester -d microsoft.com -l 1000 -b baidu` as a demonstration of non-intrusive OSINT harvesting, discovering 8 subdomains (`learn.microsoft.com`, `account.microsoft.com`, `support.microsoft.com`, etc.).
-- Tested multi-source queries (`-b all`) and observed API key requirements for threat intelligence sources.
+Using `theHarvester 4.11.1`, performed non-intrusive asset discovery:
+- Executed `theHarvester -d microsoft.com -l 1000 -b baidu` as a passive reconnaissance showcase, discovering 8 public subdomains (`learn.microsoft.com`, `account.microsoft.com`, `support.microsoft.com`, etc.) without touching target infrastructure.
+- Tested multi-source queries (`-b all`) and cataloged threat intelligence API integration options.
 
 ---
 
-### 4.5 Network Scanning with Zenmap (W2-PM5)
+### 4.5 Active Subnet Scanning with Zenmap / Nmap (Module 5)
 
-For the internal scanning activity, I performed host discovery and port enumeration on my local LAN (`192.168.64.0/24`):
-- Ran `ipconfig /all` on Windows to identify local IP `192.168.64.10`, subnet mask `255.255.255.0`, and default gateway `192.168.64.1`.
-- Executed `nmap -T4 -F 192.168.64.0/24` in Zenmap.
-- Discovered 3 active hosts on the network:
-  - **`192.168.64.1`** (Gateway/Router): Ports `53/tcp` (DNS) and `5000/tcp` (UPnP) open *(MAC address sanitized)*.
-  - **`192.168.64.2`** (Web Server): Port `80/tcp` (HTTP) open *(MAC address sanitized)*.
+Conducted internal host discovery and service port enumeration on local subnet `192.168.64.0/24`:
+- Identified local interface `192.168.64.10`, subnet mask `255.255.255.0`, and default gateway `192.168.64.1` via `ipconfig /all`.
+- Executed fast TCP scan: `nmap -T4 -F 192.168.64.0/24`.
+- Enumerated 3 live systems within the segment:
+  - **`192.168.64.1`** (Gateway Router): Ports `53/tcp` (DNS) and `5000/tcp` (UPnP) open *(MAC address sanitized)*.
+  - **`192.168.64.2`** (Internal Web Server): Port `80/tcp` (HTTP) open *(MAC address sanitized)*.
   - **`192.168.64.10`** (Windows Workstation): Ports `135/tcp` (MSRPC), `139/tcp` (NetBIOS), and `445/tcp` (SMB) open.
 
 ---
 
 ## 5. Risk Analysis / Impact
 
-Based on the information collected during the footprinting and network scanning activities, I identified the following potential risks:
+Based on the information gathered during external footprinting and internal network scanning, the following risks were identified:
 
 | # | Risk / Finding | Evidence / Observation | Potential Impact | Risk Level |
 | :-: | :--- | :--- | :--- | :-: |
-| 1 | **Web technology information exposed** | WhatWeb identified WordPress 7.0.4 and WP Download Manager 3.3.58 | Attackers may use exposed version details to identify known software vulnerabilities. | 🟡 **Medium** |
-| 2 | **DNS infrastructure information exposed** | DNSRecon identified DNS, MX, SPF records and BIND version `9.16.23-RH` | Disclosing daemon versions assists in building targeted infrastructure profiles. | 🟡 **Medium** |
-| 3 | **Multiple live hosts visible on local network** | Zenmap identified 3 live hosts and open SMB/NetBIOS ports on `192.168.64.10` | Exposed SMB (445) and NetBIOS (139) on local networks can permit lateral movement or credential attacks. | 🟡 **Medium** |
-| 4 | **Server IP address identifiable** | Nslookup resolved domain to `192.232.216.135` | Provides the direct network location of the web service. | 🟢 **Low** |
-| 5 | **HTTP technical information exposed** | Curl returned response headers and exposed `/wp-json/` | Assists in technology fingerprinting and REST API route enumeration. | 🟢 **Low** |
-| 6 | **WAF technology identifiable** | Wafw00f identified ModSecurity (SpiderLabs) | Reveals perimeter security architecture to an attacker. | 🟢 **Low** |
+| 1 | **Web Technology Banner Disclosure** | WhatWeb identified WordPress 7.0.4 and WP Download Manager 3.3.58 | Detailed version disclosure accelerates targeted exploit identification. | 🟡 **Medium** |
+| 2 | **DNS Daemon Version Disclosure** | DNSRecon exposed BIND version `9.16.23-RH` and zone records | Detailed daemon metadata assists adversaries in fingerprinting OS/distro vulnerabilities. | 🟡 **Medium** |
+| 3 | **Internal Host & SMB/NetBIOS Exposure** | Zenmap identified 3 live hosts and active SMB (445) / NetBIOS (139) on `192.168.64.10` | Unrestricted internal SMB services facilitate lateral movement and NTLM relay attacks. | 🟡 **Medium** |
+| 4 | **Origin Server IP Exposure** | Nslookup resolved domain directly to `192.232.216.135` | Direct origin IP disclosure enables attackers to bypass edge protection and WAF filtering. | 🟢 **Low** |
+| 5 | **HTTP Server & REST API Headers** | cURL returned verbose headers and exposed `/wp-json/` | Exposes internal CMS structure and available API endpoints. | 🟢 **Low** |
+| 6 | **WAF Architecture Fingerprinted** | Wafw00f identified ModSecurity (SpiderLabs) | Informs attackers of inspection mechanisms, enabling tailored WAF evasion techniques. | 🟢 **Low** |
 
 **Risk Level Key**: 🔴 Critical | 🟡 Medium | 🟢 Low
 
-The risks above are observations from the footprinting and scanning exercises, not confirmed vulnerabilities. The practical exercises primarily involved information gathering and host discovery. No exploitation or vulnerability validation was performed as part of these modules.
-
-Therefore, the presence of information such as a software version, IP address, or DNS record does not by itself mean that the system is vulnerable. Further authorized security testing would be required to confirm any actual vulnerability.
+*Assessment Context*: The findings above reflect informational and architectural disclosures discovered during passive and active reconnaissance. These disclosures do not constitute confirmed exploitations but represent the foundational intelligence an attacker leverages to prioritize subsequent attack phases.
 
 ---
 
-## 6. Recommendations
+## 6. Defensive Recommendations
 
-Based on the observations from these activities, I recommend the following security improvements:
-
-1. **Review publicly exposed technology information**: Regularly check what web technologies, CMS versions, and plugins are publicly visible.
-2. **Keep software updated**: Ensure WordPress core, plugins, and web servers are routinely patched.
-3. **Review HTTP headers**: Suppress unnecessary server banners and add security headers (`HSTS`, `CSP`, `X-Frame-Options`).
-4. **Review DNS records regularly**: Periodically audit DNS and suppress BIND version banner leakage.
-5. **Properly configure and monitor the WAF**: Keep ModSecurity enabled and tuned with updated rule sets.
-6. **Perform regular internal network discovery**: Periodically scan internal subnets to identify unauthorized or rogue devices.
-7. **Secure internal SMB and NetBIOS**: Restrict inbound access to ports 135, 139, and 445 on local workstations.
-8. **Disable UPnP on gateway devices**: Turn off UPnP on routers to prevent automated port forwarding.
-9. **Maintain network documentation**: Keep network topology diagrams and IP address assignments updated.
-10. **Perform security testing with authorization**: Always ensure scanning and OSINT testing are conducted within an authorized scope.
+1. **Suppress Public Technology Banners**: Minimize verbose application banners in HTTP response headers and disable default server tokens (`ServerTokens Prod`, `ServerSignature Off`).
+2. **Harden DNS Configurations**: Suppress BIND version responses (`version.bind` CHAOS TXT queries) and restrict zone transfers (`axfr`).
+3. **Enforce WAF Security Controls**: Continuously tune ModSecurity rule sets (OWASP Core Rule Set) to block automated scanner probes and technology fingerprinting.
+4. **Isolate Internal Management & SMB Services**: Enforce host-based firewalls on workstations to restrict inbound ports 135, 139, and 445 to approved administration subnets only.
+5. **Disable UPnP on Edge Gateways**: Disable Universal Plug and Play (UPnP) on router/gateway devices to prevent unauthorized automated port forwarding.
+6. **Implement Continuous Attack Surface Monitoring**: Routinely execute passive external asset discovery to catch orphaned subdomains, unintended cloud resources, or exposed files before external actors do.
 
 ---
 
-## 7. Conclusion
+## 7. Executive Summary & Conclusion
 
-During Week 2 of my Cybersecurity & Ethical Hacking internship, I completed practical activities covering footprinting, reconnaissance, Google dorking, OSINT mapping, and network scanning.
+This assessment successfully validated the critical role of structured intelligence gathering in modern security assessments. Across five structured phases—ranging from non-intrusive DNS and WHOIS footprinting to passive search-engine intelligence, visual graph correlation, and active subnet discovery—the engagement demonstrated how seemingly isolated metadata points can be synthesized into an actionable attack map.
 
-In the footprinting activity, I used six Kali Linux tools to collect information about the target domain. I learned how WHOIS provides domain details, WhatWeb identifies web technologies, Nslookup resolves domain names, Curl inspects HTTP headers, Wafw00f identifies a WAF, and DNSRecon provides DNS and server information.
+Key takeaways from the engagement include:
+1. **Perimeter Hardening:** While perimeter defenses such as ModSecurity WAF are actively in place, underlying software versions (WordPress, WP Download Manager, Apache, BIND) remain partially discoverable, offering threat actors initial vectors for exploit research.
+2. **Internal Network Visibility:** Local host enumeration identified legacy services (SMB/NetBIOS and UPnP) active across endpoints, underscoring the necessity of strict host isolation and network segmentation even within internal trust zones.
+3. **Defense-in-Depth Posture:** Addressing minor metadata leakages and enforcing strict service segregation significantly raises the effort required for an external adversary to gain a foothold or pivot laterally.
 
-In the OSINT and scanning activities, I learned how Google dorks uncover indexed assets, how Maltego and theHarvester gather intelligence non-intrusively, and how Zenmap maps live subnet hosts and services.
-
-The exercises showed me that information gathering is an essential first step in cybersecurity. Before attempting to exploit a system, a security professional can learn a significant amount about an environment simply by analyzing publicly available information and network responses.
+By applying continuous attack surface management and systematically remediating information leakage, organizations can dramatically shrink their discoverable perimeter.
 
 ---
 
-## 8. Evidences Collected
+## 8. Evidence & Artifacts
 
-### 8.1 Footprinting & Reconnaissance Evidence (W2-PM1)
+### 8.1 Multi-Vector Footprinting Evidence (Module 1)
 
 #### WHOIS Query Output (`whois networkwalks.com`)
 *Shows domain registration, GoDaddy registrar, and HostGator nameservers.*
@@ -197,7 +176,7 @@ The exercises showed me that information gathering is an essential first step in
 *Resolves domain directly to IP 192.232.216.135.*
 ![nslookup Result](assets/pm1/task3_nslookup.png)
 
-#### Curl -I Response Headers (`curl -I https://networkwalks.com`)
+#### cURL Response Headers (`curl -I https://networkwalks.com`)
 *Shows HTTP headers, Apache server, WordPress cache, and REST API link (session token sanitized).*
 ![curl Header Analysis](assets/pm1/task4_curl_headers.png)
 
@@ -211,7 +190,7 @@ The exercises showed me that information gathering is an essential first step in
 
 ---
 
-### 8.2 Maltego Visual OSINT Evidence (W2-PM3)
+### 8.2 Maltego Visual OSINT Evidence (Module 3)
 
 #### Maltego Data Hub & Transform Hub Setup
 *Maltego Graph 4.12.1 setup with OSINT transforms and partner integrations.*
@@ -227,7 +206,7 @@ The exercises showed me that information gathering is an essential first step in
 
 ---
 
-### 8.3 theHarvester Passive OSINT Evidence (W2-PM4)
+### 8.3 theHarvester Passive OSINT Evidence (Module 4)
 
 #### Subdomain Enumeration via Baidu Search Engine
 *Passive harvest of 8 subdomains without generating direct traffic on the target.*
@@ -239,7 +218,7 @@ The exercises showed me that information gathering is an essential first step in
 
 ---
 
-### 8.4 Zenmap & Nmap Local Network Scanning Evidence (W2-PM5)
+### 8.4 Zenmap & Nmap Local Network Scanning Evidence (Module 5)
 
 #### Zenmap Subnet Quick Scan (`192.168.64.0/24`)
 *Discovered 3 live hosts: Gateway (.1), Web server (.2), and Windows host (.10) (Hardware MACs sanitized).*
@@ -253,10 +232,7 @@ The exercises showed me that information gathering is an essential first step in
 
 ## -End-
 
-👤 **Author**  
-**Cybersecurity Professional**  
-Batch: **B082-Networkwalks**  
-Repository: [Penetration-Testing-Reports---Internship-Week2-Task-](https://github.com/dr-winner/Penetration-Testing-Reports---Internship-Week2-Task-)
-
-📌 **Project Information**  
-**Program Name**: Cybersecurity program at Networkwalks | **Week**: 02 | **Repository**: GitHub
+👤 **Assessor**  
+**Richard Winner Duvor**  
+Assessment: **OSINT & Network Reconnaissance Assessment**  
+Repository: [osint-and-network-recon-assessment](https://github.com/dr-winner/osint-and-network-recon-assessment)
